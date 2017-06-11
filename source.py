@@ -18,6 +18,16 @@ def logged(func):
         else:
             # Printing the name of the function to be logged
             print ("You called " + func.__name__ + "()")
+
+        # Printing named args
+        if len(kwargs) > 0:
+            print ("Named arguments and their values:")
+            # Printing kwargs
+            for key, value in kwargs.iteritems():
+                print (key, value)
+        else:
+            print ("No named arguments passed")
+
         # Printing the return value by the func
         print ("It returned " + str(func(*args, **kwargs)))
 
@@ -25,8 +35,8 @@ def logged(func):
     return func_wrapper
 
 @logged
-def foo(*args):
+def foo(*args, **kargs):
     return 3 + len(args)
 
 if __name__ == "__main__":
-    print foo()
+    print foo(4)
