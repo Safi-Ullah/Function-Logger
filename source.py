@@ -29,4 +29,4 @@ def foo(*args):
     return 3 + len(args)
 
 if __name__ == "__main__":
-    print foo(4, 8, 9)
+    print foo()
