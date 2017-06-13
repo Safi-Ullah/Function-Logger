@@ -40,5 +40,6 @@ def logged(func):
 def foo(*args, **kargs):
     return 3 + len(args)
 
+
 if __name__ == "__main__":
     print foo(4)
