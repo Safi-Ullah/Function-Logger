@@ -1,38 +1,31 @@
-import sys
-
-
 def logged(func):
     def func_wrapper(*args, **kwargs):
-        if len(args) != 0:
+        if args:
             # Printing function name and arguments
-            sys.stdout.write("You called " +
+            function_call = ("You called " +
                              func.__name__ +
                              "(" + str(args[0]))
-            # Traversing over the args to print them
-            # --------------------------------------
+
             for i in range(1, len(args)):
-                sys.stdout.write(", " + str(args[i]))
-            print(")")
-            sys.stdout.flush()
-            # --------------------------------------
+                function_call += ", " + str(args[i])
+
+            function_call += ")"
+            print(function_call)
         else:
             # Printing the name of the function to be logged
             print("You called " + func.__name__ + "()")
 
-        # Printing named args
-        if len(kwargs) > 0:
+        if kwargs:
             print("Named arguments and their values:")
             # Printing kwargs
             for key, value in kwargs.iteritems():
                 print(key, value)
-        else:
-            print("No named arguments passed")
 
-        return_val = func(*args, **kwargs)
-        # Printing the return value by the func
-        print("It returned " + str(return_val))
+        returned_val = func(*args, **kwargs)
 
-        return return_val
+        print("It returned " + str(returned_val))
+
+        return returned_val
     return func_wrapper
 
 
@@ -42,4 +35,4 @@ def foo(*args, **kargs):
 
 
 if __name__ == "__main__":
-    print foo(4)
+    print foo(10, i=19)
