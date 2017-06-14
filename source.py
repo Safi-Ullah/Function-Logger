@@ -28,11 +28,11 @@ def logged(func):
         else:
             print("No named arguments passed")
 
-        return_val = func(*args, **kwargs)
+        returned_val = func(*args, **kwargs)
         # Printing the return value by the func
-        print("It returned " + str(return_val))
+        print("It returned " + str(returned_val))
 
-        return return_val
+        return returned_val
     return func_wrapper
 
 
